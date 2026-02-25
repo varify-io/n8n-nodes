@@ -5,7 +5,7 @@ import {
 	reportOperations,
 	schemaOperations,
 } from './config/operations';
-import { experimentParameters } from './config/parameters';
+import { experimentParameters } from './config/properties';
 
 export class Varify implements INodeType {
 	description: INodeTypeDescription = {
