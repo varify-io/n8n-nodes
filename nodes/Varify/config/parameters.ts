@@ -11,7 +11,7 @@ import { INodeProperties } from 'n8n-workflow';
  * Used by: get, update, updateStatus, duplicate, updateTrafficAllocation, toggleTracking
  * Also used by all report operations
  */
-export const experimentIdParameter: INodeProperties = {
+const experimentIdParameter: INodeProperties[] = [{
 	displayName: 'Experiment ID',
 	name: 'experimentId',
 	type: 'string',
@@ -35,12 +35,12 @@ export const experimentIdParameter: INodeProperties = {
 	default: '',
 	description: 'The ID of the experiment',
 	placeholder: 'exp_123abc',
-};
+}];
 
 /**
  * Pagination parameters for getAll operation
  */
-export const paginationParameters: INodeProperties[] = [
+const paginationParameters: INodeProperties[] = [
 	{
 		displayName: 'Page ID',
 		name: 'page_id',
@@ -79,7 +79,7 @@ export const paginationParameters: INodeProperties[] = [
 /**
  * Filtering and sorting parameters for getAll operation
  */
-export const filteringParameters: INodeProperties[] = [
+const filteringParameters: INodeProperties[] = [
 	{
 		displayName: 'Filter by Status',
 		name: 'filter_by_status',
@@ -197,7 +197,7 @@ export const filteringParameters: INodeProperties[] = [
 /**
  * Experiment creation parameters
  */
-export const createExperimentParameters: INodeProperties[] = [
+const createExperimentParameters: INodeProperties[] = [
 	{
 		displayName: 'Name',
 		name: 'name',
@@ -313,7 +313,7 @@ export const createExperimentParameters: INodeProperties[] = [
 /**
  * Experiment update parameters
  */
-export const updateExperimentParameters: INodeProperties[] = [
+const updateExperimentParameters: INodeProperties[] = [
 	{
 		displayName: 'Name',
 		name: 'name',
@@ -522,7 +522,7 @@ export const updateExperimentParameters: INodeProperties[] = [
 /**
  * Status update parameter
  */
-export const statusParameter: INodeProperties = {
+const statusParameter: INodeProperties[] = [{
 	displayName: 'Status',
 	name: 'status',
 	type: 'options',
@@ -562,12 +562,12 @@ export const statusParameter: INodeProperties = {
 	],
 	default: 'initial',
 	description: 'The new status for the experiment',
-};
+}];
 
 /**
  * Traffic allocation parameter for updateTrafficAllocation operation
  */
-export const trafficAllocationParameter: INodeProperties = {
+const trafficAllocationParameter: INodeProperties[] = [{
 	displayName: 'Variations',
 	name: 'variations',
 	type: 'json',
@@ -585,12 +585,12 @@ export const trafficAllocationParameter: INodeProperties = {
 	typeOptions: {
 		alwaysOpenEditWindow: true,
 	},
-};
+}];
 
 /**
  * Report parameters for all report operations
  */
-export const reportParameters: INodeProperties[] = [
+const reportParameters: INodeProperties[] = [
 	{
 		displayName: 'Start Date',
 		name: 'start_date',
@@ -679,12 +679,12 @@ export const reportParameters: INodeProperties[] = [
  * All experiment parameters combined
  */
 export const experimentParameters: INodeProperties[] = [
-	experimentIdParameter,
+	...experimentIdParameter,
 	...paginationParameters,
 	...filteringParameters,
 	...createExperimentParameters,
 	...updateExperimentParameters,
-	statusParameter,
-	trafficAllocationParameter,
+	...statusParameter,
+	...trafficAllocationParameter,
 	...reportParameters,
 ];
