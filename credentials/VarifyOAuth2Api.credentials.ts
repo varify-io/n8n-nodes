@@ -1,16 +1,11 @@
-import {
-	IAuthenticateGeneric,
-	ICredentialTestRequest,
-	ICredentialType,
-	INodeProperties,
-} from 'n8n-workflow';
+import type { Icon, ICredentialType, INodeProperties } from 'n8n-workflow';
 
 export class VarifyOAuth2Api implements ICredentialType {
 	name = 'varifyOAuth2Api';
 
 	displayName = 'varify.io OAuth2 API';
-	documentationUrl = 'varifyIo';
-	icon = '/path/to/file';
+	documentationUrl = 'https://varify.io';
+	icon = 'file:../icons/github.svg' as Icon;
 	extends = ['oAuth2Api'];
 
 	properties: INodeProperties[] = [

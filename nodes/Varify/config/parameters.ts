@@ -92,8 +92,18 @@ export const filteringParameters: INodeProperties[] = [
 		},
 		options: [
 			{
+				name: 'Active',
+				value: 'active',
+				description: 'Experiment is running',
+			},
+			{
 				name: 'All',
 				value: '',
+			},
+			{
+				name: 'Archived',
+				value: 'archived',
+				description: 'Experiment is archived',
 			},
 			{
 				name: 'Initial',
@@ -101,19 +111,9 @@ export const filteringParameters: INodeProperties[] = [
 				description: 'Experiment is in initial state',
 			},
 			{
-				name: 'Active',
-				value: 'active',
-				description: 'Experiment is running',
-			},
-			{
 				name: 'Paused',
 				value: 'paused',
 				description: 'Experiment is paused',
-			},
-			{
-				name: 'Archived',
-				value: 'archived',
-				description: 'Experiment is archived',
 			},
 			{
 				name: 'QA',
@@ -395,24 +395,24 @@ export const updateExperimentParameters: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'Initial',
-				value: 'initial',
-				description: 'Experiment is in initial state',
-			},
-			{
 				name: 'Active',
 				value: 'active',
 				description: 'Experiment is running',
 			},
 			{
-				name: 'Paused',
-				value: 'paused',
-				description: 'Experiment is paused',
-			},
-			{
 				name: 'Archived',
 				value: 'archived',
 				description: 'Experiment is archived',
+			},
+			{
+				name: 'Initial',
+				value: 'initial',
+				description: 'Experiment is in initial state',
+			},
+			{
+				name: 'Paused',
+				value: 'paused',
+				description: 'Experiment is paused',
 			},
 			{
 				name: 'QA',
@@ -478,7 +478,7 @@ export const updateExperimentParameters: INodeProperties[] = [
 		},
 		default: '',
 		description:
-			'Update or create variations. Include ID to update existing, omit id to create new. Example: [{"id": 123, "name": "Updated Control", "traffic_allocation": 60}, {"name": "New Variation", "traffic_allocation": 40}]',
+			'Update or create variations. Include ID to update existing, omit ID to create new.',
 		typeOptions: {
 			alwaysOpenEditWindow: true,
 		},
@@ -535,24 +535,24 @@ export const statusParameter: INodeProperties = {
 	},
 	options: [
 		{
-			name: 'Initial',
-			value: 'initial',
-			description: 'Experiment is in initial state',
-		},
-		{
 			name: 'Active',
 			value: 'active',
 			description: 'Experiment is running',
 		},
 		{
-			name: 'Paused',
-			value: 'paused',
-			description: 'Experiment is paused',
-		},
-		{
 			name: 'Archived',
 			value: 'archived',
 			description: 'Experiment is archived',
+		},
+		{
+			name: 'Initial',
+			value: 'initial',
+			description: 'Experiment is in initial state',
+		},
+		{
+			name: 'Paused',
+			value: 'paused',
+			description: 'Experiment is paused',
 		},
 		{
 			name: 'QA',
@@ -671,7 +671,7 @@ export const reportParameters: INodeProperties[] = [
 			},
 		},
 		default: false,
-		description: 'Return raw data instead of formatted report',
+		description: 'Whether raw data should be returned, instead of formatted report',
 	},
 ];
 
