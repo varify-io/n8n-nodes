@@ -1,4 +1,4 @@
-import type { Icon, ICredentialType, INodeProperties } from 'n8n-workflow';
+import type { Icon, ICredentialType, INodeProperties, ICredentialTestRequest } from 'n8n-workflow';
 
 export class VarifyOAuth2Api implements ICredentialType {
 	name = 'varifyOAuth2Api';
@@ -50,22 +50,22 @@ export class VarifyOAuth2Api implements ICredentialType {
 		},
 	];
 
-	// test: ICredentialTestRequest = {
-	// 	request: {
-	// 		baseURL: '={{$credentials.apiBaseUrl}}',
-	// 		url: '/oauth/token',
-	// 		method: 'POST',
-	// 		headers: {
-	// 			'Content-Type': 'application/json',
-	// 			Accept: 'application/json',
-	// 		},
-	// 		body: {
-	// 			grant_type: 'client_credentials',
-	// 			client_id: '={{$credentials.clientId}}',
-	// 			client_secret: '={{$credentials.clientSecret}}',
-	// 			scope:
-	// 				'create-experiment duplicate-experiment show-experiment list-experiments update-experiment update-experiment-tracking update-experiment-status update-experiment-traffic-allocation list-clients',
-	// 		},
-	// 	},
-	// };
+	test: ICredentialTestRequest = {
+		request: {
+			baseURL: '={{$credentials.apiBaseUrl}}',
+			url: '/oauth/token',
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
+			},
+			body: {
+				grant_type: 'client_credentials',
+				client_id: '={{$credentials.clientId}}',
+				client_secret: '={{$credentials.clientSecret}}',
+				scope:
+					'create-experiment duplicate-experiment show-experiment list-experiments update-experiment update-experiment-tracking update-experiment-status update-experiment-traffic-allocation list-clients',
+			},
+		},
+	};
 }
