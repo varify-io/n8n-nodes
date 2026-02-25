@@ -266,8 +266,23 @@ const createExperimentParameters: INodeProperties[] = [
 				operation: ['create'],
 			},
 		},
-		default:
-			'[\n  {\n    "name": "Control",\n    "traffic_allocation": 50\n  },\n  {\n    "name": "Variation A",\n    "traffic_allocation": 50,\n    "javascript": "console.log(\'Variation A\');",\n    "javascript_reset": "console.log(\'Reset\');",\n    "css": ".hero { background: blue; }",\n    "extensions": [],\n    "changesets": [],\n    "redirect_url": "https://example.com/variant",\n    "ga4_audience_id": "aud_123"\n  }\n]',
+		default: JSON.stringify([
+			{
+				name: 'Control',
+				traffic_allocation: 50,
+			},
+			{
+				name: 'Variation A',
+				traffic_allocation: 50,
+				javascript: "console.log('Variation A');",
+				javascript_reset: "console.log('Reset');",
+				css: '.hero { background: blue; }',
+				extensions: [],
+				changesets: [],
+				redirect_url: 'https://example.com/variant',
+				ga4_audience_id: 'aud_123',
+			},
+		], null, 2),
 		description:
 			'Array of variations. Required: name, traffic_allocation (0-100). Optional: javascript, javascript_reset, css, extensions (array), changesets (array), redirect_url (max 255 chars), ga4_audience_id (max 255 chars).',
 		typeOptions: {
@@ -578,8 +593,10 @@ const trafficAllocationParameter: INodeProperties[] = [{
 			operation: ['updateTrafficAllocation'],
 		},
 	},
-	default:
-		'[\n  {\n    "id": 123,\n    "traffic_allocation": 60\n  },\n  {\n    "id": 456,\n    "traffic_allocation": 40\n  }\n]',
+	default: JSON.stringify([
+		{ id: 123, traffic_allocation: 60 },
+		{ id: 456, traffic_allocation: 40 },
+	], null, 2),
 	description:
 		'Array of variations with updated traffic allocation. Each variation must have an ID (number) and traffic_allocation (0-100). Total must not exceed 100%.',
 	typeOptions: {
