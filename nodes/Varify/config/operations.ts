@@ -102,7 +102,7 @@ export const experimentOperations: INodeProperties['options'] = [
 		routing: {
 			request: {
 				method: 'POST',
-				url: '=/papi/experiments/{{$parameter.experiment}}/toggle-tracking',
+				url: '=/papi/experiments/{{$parameter.experimentId}}/toggle-tracking',
 			},
 		},
 	},

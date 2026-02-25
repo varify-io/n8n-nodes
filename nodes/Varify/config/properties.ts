@@ -6,6 +6,34 @@
 
 import { INodeProperties } from 'n8n-workflow';
 
+const STATUS_OPTIONS: INodeProperties['options'] = [
+	{
+		name: 'Active',
+		value: 'active',
+		description: 'Experiment is running',
+	},
+	{
+		name: 'Archived',
+		value: 'archived',
+		description: 'Experiment is archived',
+	},
+	{
+		name: 'Initial',
+		value: 'initial',
+		description: 'Experiment is in initial state',
+	},
+	{
+		name: 'Paused',
+		value: 'paused',
+		description: 'Experiment is paused',
+	},
+	{
+		name: 'QA',
+		value: 'qa',
+		description: 'Experiment is in QA testing',
+	},
+];
+
 /**
  * Experiment ID parameter - required for single experiment operations
  * Used by: get, update, updateStatus, duplicate, updateTrafficAllocation, toggleTracking
@@ -91,35 +119,8 @@ const filteringParameters: INodeProperties[] = [
 			},
 		},
 		options: [
-			{
-				name: 'Active',
-				value: 'active',
-				description: 'Experiment is running',
-			},
-			{
-				name: 'All',
-				value: '',
-			},
-			{
-				name: 'Archived',
-				value: 'archived',
-				description: 'Experiment is archived',
-			},
-			{
-				name: 'Initial',
-				value: 'initial',
-				description: 'Experiment is in initial state',
-			},
-			{
-				name: 'Paused',
-				value: 'paused',
-				description: 'Experiment is paused',
-			},
-			{
-				name: 'QA',
-				value: 'qa',
-				description: 'Experiment is in QA testing',
-			},
+			{ name: 'All', value: '' },
+			...STATUS_OPTIONS,
 		],
 		default: '',
 		description: 'Filter experiments by status',
@@ -215,7 +216,7 @@ const createExperimentParameters: INodeProperties[] = [
 	},
 	{
 		displayName: 'Page URL',
-		name: 'pageUrl',
+		name: 'page_url',
 		type: 'string',
 		required: true,
 		displayOptions: {
@@ -230,7 +231,7 @@ const createExperimentParameters: INodeProperties[] = [
 	},
 	{
 		displayName: 'Page Name',
-		name: 'pageName',
+		name: 'page_name',
 		type: 'string',
 		displayOptions: {
 			show: {
@@ -408,33 +409,7 @@ const updateExperimentParameters: INodeProperties[] = [
 				operation: ['update'],
 			},
 		},
-		options: [
-			{
-				name: 'Active',
-				value: 'active',
-				description: 'Experiment is running',
-			},
-			{
-				name: 'Archived',
-				value: 'archived',
-				description: 'Experiment is archived',
-			},
-			{
-				name: 'Initial',
-				value: 'initial',
-				description: 'Experiment is in initial state',
-			},
-			{
-				name: 'Paused',
-				value: 'paused',
-				description: 'Experiment is paused',
-			},
-			{
-				name: 'QA',
-				value: 'qa',
-				description: 'Experiment is in QA testing',
-			},
-		],
+		options: STATUS_OPTIONS,
 		default: 'initial',
 		description: 'Updated experiment status (leave empty to keep current)',
 	},
@@ -548,33 +523,7 @@ const statusParameter: INodeProperties[] = [{
 			operation: ['updateStatus'],
 		},
 	},
-	options: [
-		{
-			name: 'Active',
-			value: 'active',
-			description: 'Experiment is running',
-		},
-		{
-			name: 'Archived',
-			value: 'archived',
-			description: 'Experiment is archived',
-		},
-		{
-			name: 'Initial',
-			value: 'initial',
-			description: 'Experiment is in initial state',
-		},
-		{
-			name: 'Paused',
-			value: 'paused',
-			description: 'Experiment is paused',
-		},
-		{
-			name: 'QA',
-			value: 'qa',
-			description: 'Experiment is in QA testing',
-		},
-	],
+	options: STATUS_OPTIONS,
 	default: 'initial',
 	description: 'The new status for the experiment',
 }];
@@ -693,9 +642,9 @@ const reportParameters: INodeProperties[] = [
 ];
 
 /**
- * All experiment parameters combined
+ * All parameter definitions combined
  */
-export const experimentParameters: INodeProperties[] = [
+export const allParameters: INodeProperties[] = [
 	...experimentIdParameter,
 	...paginationParameters,
 	...filteringParameters,

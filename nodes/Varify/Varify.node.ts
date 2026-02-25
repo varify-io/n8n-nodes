@@ -1,18 +1,38 @@
-import { NodeConnectionTypes, type INodeType, type INodeTypeDescription } from 'n8n-workflow';
+import {
+	NodeConnectionTypes,
+	type INodeProperties,
+	type INodeType,
+	type INodeTypeDescription,
+} from 'n8n-workflow';
 import {
 	clientOperations,
 	experimentOperations,
 	reportOperations,
 	schemaOperations,
 } from './config/operations';
-import { experimentParameters } from './config/properties';
+import { allParameters } from './config/properties';
+
+const createOperationProperty = (
+	resource: string,
+	options: INodeProperties['options'],
+	defaultValue: string,
+): INodeProperties => {
+	return {
+		displayName: 'Operation',
+		name: 'operation',
+		type: 'options',
+		noDataExpression: true,
+		displayOptions: { show: { resource: [resource] } },
+		options,
+		default: defaultValue,
+	};
+};
 
 export class Varify implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Varify',
 		name: 'varify',
 		icon: { light: 'file:../../icons/github.svg', dark: 'file:../../icons/github.dark.svg' },
-		// confirm group
 		group: ['input'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
@@ -65,68 +85,12 @@ export class Varify implements INodeType {
 				default: 'experiment',
 			},
 
-			// Experiment operations
-			{
-				displayName: 'Operation',
-				name: 'operation',
-				type: 'options',
-				noDataExpression: true,
-				displayOptions: {
-					show: {
-						resource: ['experiment'],
-					},
-				},
-				options: experimentOperations,
-				default: 'getAll',
-			},
+			createOperationProperty('experiment', experimentOperations, 'getAll'),
+			createOperationProperty('client', clientOperations, 'getAllClients'),
+			createOperationProperty('report', reportOperations, 'getReport'),
+			createOperationProperty('schema', schemaOperations, 'getAudienceTargetingSchema'),
 
-			// Client operations
-			{
-				displayName: 'Operation',
-				name: 'operation',
-				type: 'options',
-				noDataExpression: true,
-				displayOptions: {
-					show: {
-						resource: ['client'],
-					},
-				},
-				options: clientOperations,
-				default: 'getAllClients',
-			},
-
-			// Report operations
-			{
-				displayName: 'Operation',
-				name: 'operation',
-				type: 'options',
-				noDataExpression: true,
-				displayOptions: {
-					show: {
-						resource: ['report'],
-					},
-				},
-				options: reportOperations,
-				default: 'getReport',
-			},
-
-			// Schema operations
-			{
-				displayName: 'Operation',
-				name: 'operation',
-				type: 'options',
-				noDataExpression: true,
-				displayOptions: {
-					show: {
-						resource: ['schema'],
-					},
-				},
-				options: schemaOperations,
-				default: 'getAudienceTargetingSchema',
-			},
-
-			// Experiment parameters
-			...experimentParameters,
+			...allParameters,
 		],
 	};
 }

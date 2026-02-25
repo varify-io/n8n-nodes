@@ -1,5 +1,8 @@
 import type { Icon, ICredentialType, INodeProperties, ICredentialTestRequest } from 'n8n-workflow';
 
+const VARIFY_SCOPES =
+	'create-experiment duplicate-experiment show-experiment list-experiments update-experiment update-experiment-tracking update-experiment-status update-experiment-traffic-allocation list-clients';
+
 export class VarifyOAuth2Api implements ICredentialType {
 	name = 'varifyOAuth2Api';
 
@@ -45,8 +48,7 @@ export class VarifyOAuth2Api implements ICredentialType {
 			displayName: 'Scope',
 			name: 'scope',
 			type: 'hidden',
-			default:
-				'create-experiment duplicate-experiment show-experiment list-experiments update-experiment update-experiment-tracking update-experiment-status update-experiment-traffic-allocation list-clients',
+			default: VARIFY_SCOPES,
 		},
 	];
 
@@ -63,8 +65,7 @@ export class VarifyOAuth2Api implements ICredentialType {
 				grant_type: 'client_credentials',
 				client_id: '={{$credentials.clientId}}',
 				client_secret: '={{$credentials.clientSecret}}',
-				scope:
-					'create-experiment duplicate-experiment show-experiment list-experiments update-experiment update-experiment-tracking update-experiment-status update-experiment-traffic-allocation list-clients',
+				scope: VARIFY_SCOPES,
 			},
 		},
 	};
