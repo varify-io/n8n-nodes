@@ -76,18 +76,7 @@ export class Varify implements INodeType {
 						resource: ['experiment'],
 					},
 				},
-				options: experimentOperations.map((op) => ({
-					name: op.name,
-					value: op.value,
-					description: op.description,
-					action: op.action,
-					routing: {
-						request: {
-							method: op.method,
-							url: op.endpoint,
-						},
-					},
-				})),
+				options: experimentOperations,
 				default: 'getAll',
 			},
 
@@ -102,12 +91,7 @@ export class Varify implements INodeType {
 						resource: ['client'],
 					},
 				},
-				options: clientOperations.map((op) => ({
-					name: op.name,
-					value: op.value,
-					description: op.description,
-					action: op.action,
-				})),
+				options: clientOperations,
 				default: 'getAllClients',
 			},
 
@@ -122,12 +106,7 @@ export class Varify implements INodeType {
 						resource: ['report'],
 					},
 				},
-				options: reportOperations.map((op) => ({
-					name: op.name,
-					value: op.value,
-					description: op.description,
-					action: op.action,
-				})),
+				options: reportOperations,
 				default: 'getReport',
 			},
 
@@ -142,12 +121,7 @@ export class Varify implements INodeType {
 						resource: ['schema'],
 					},
 				},
-				options: schemaOperations.map((op) => ({
-					name: op.name,
-					value: op.value,
-					description: op.description,
-					action: op.action,
-				})),
+				options: schemaOperations,
 				default: 'getAudienceTargetingSchema',
 			},
 
