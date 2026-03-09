@@ -7,7 +7,7 @@ variables:
   PNPM_STORE_DIR: .pnpm-store
 
 default:
-  image: node:22-alpine
+  image: node:22.16.0-alpine3.22
   before_script:
     - corepack enable
     - corepack prepare pnpm@9.15.5 --activate

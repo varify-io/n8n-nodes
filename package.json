@@ -7,6 +7,9 @@
     "keywords": [
         "n8n-community-node-package"
     ],
+    "engines": {
+        "node": "22.16.0"
+    },
     "author": {
         "name": "Dan Schalow",
         "email": "ds@danschalow.com"
