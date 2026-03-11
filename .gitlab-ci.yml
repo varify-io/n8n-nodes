@@ -1,0 +1,53 @@
+stages:
+  - lint
+  - build
+  - publish
+
+variables:
+  PNPM_STORE_DIR: .pnpm-store
+
+default:
+  image: node:22.16.0-alpine3.22
+  before_script:
+    - corepack enable
+    - corepack prepare pnpm@9.15.5 --activate
+    - pnpm install --frozen-lockfile
+  cache:
+    key:
+      files:
+        - pnpm-lock.yaml
+    paths:
+      - .pnpm-store
+    policy: pull
+
+lint:
+  stage: lint
+  script:
+    - pnpm run lint
+  cache:
+    key:
+      files:
+        - pnpm-lock.yaml
+    paths:
+      - .pnpm-store
+    policy: pull-push
+
+build:
+  stage: build
+  script:
+    - pnpm run build
+  artifacts:
+    paths:
+      - dist/
+    expire_in: 1 hour
+
+publish:
+  stage: publish
+  script:
+    - echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc
+    - pnpm publish --access public --no-git-checks
+  only:
+    - main
+  environment:
+    name: npm
+    url: https://www.npmjs.com/package/@varify-io/n8n-nodes-varify

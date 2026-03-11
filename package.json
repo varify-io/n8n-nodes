@@ -1,0 +1,54 @@
+{
+    "name": "@varify-io/n8n-nodes-varify",
+    "version": "0.1.0",
+    "license": "MIT",
+    "homepage": "",
+    "description": "n8n node for varify papi",
+    "keywords": [
+        "n8n-community-node-package"
+    ],
+    "engines": {
+        "node": "22.16.0"
+    },
+    "author": {
+        "name": "Dan Schalow",
+        "email": "dan@varify.io"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://gitlab.com/varify/n8n-nodes.git"
+    },
+    "scripts": {
+        "build": "n8n-node build",
+        "build:watch": "tsc --watch",
+        "dev": "n8n-node dev",
+        "lint": "n8n-node lint",
+        "lint:fix": "n8n-node lint --fix",
+        "release": "n8n-node release",
+        "prepublishOnly": "n8n-node prerelease"
+    },
+    "files": [
+        "dist"
+    ],
+    "n8n": {
+        "n8nNodesApiVersion": 1,
+        "strict": true,
+        "credentials": [
+            "dist/credentials/VarifyOAuth2Api.credentials.js"
+        ],
+        "nodes": [
+            "dist/nodes/Varify/Varify.node.js"
+        ]
+    },
+    "devDependencies": {
+        "@n8n/node-cli": "*",
+        "eslint": "9.32.0",
+        "prettier": "3.6.2",
+        "release-it": "^19.0.4",
+        "typescript": "5.9.2"
+    },
+    "peerDependencies": {
+        "n8n-workflow": "*"
+    },
+    "packageManager": "pnpm@9.15.5+sha512.845196026aab1cc3f098a0474b64dfbab2afe7a1b4e91dd86895d8e4aa32a7a6d03049e2d0ad770bbe4de023a7122fb68c1a1d6e0d033c7076085f9d5d4800d4"
+}
