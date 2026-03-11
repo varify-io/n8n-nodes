@@ -139,6 +139,11 @@ export const reportOperations: INodeProperties['options'] = [
 			request: {
 				method: 'GET',
 				url: '=/papi/experiments/{{$parameter.experimentId}}/report',
+				qs: {
+					end_date: '{{$parameter.end_date}}',
+					report_type: '{{$parameter.report_type}}',
+					start_date: '{{$parameter.start_date}}',
+				},
 			},
 		},
 	},

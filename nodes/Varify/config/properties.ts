@@ -39,31 +39,33 @@ const STATUS_OPTIONS: INodeProperties['options'] = [
  * Used by: get, update, updateStatus, duplicate, updateTrafficAllocation, toggleTracking
  * Also used by all report operations
  */
-const experimentIdParameter: INodeProperties[] = [{
-	displayName: 'Experiment ID',
-	name: 'experimentId',
-	type: 'string',
-	required: true,
-	displayOptions: {
-		show: {
-			resource: ['experiment', 'report'],
-			operation: [
-				'get',
-				'update',
-				'updateStatus',
-				'duplicate',
-				'updateTrafficAllocation',
-				'toggleTracking',
-				'getReport',
-				'getDailyReport',
-				'getRawRevenueReport',
-			],
+const experimentIdParameter: INodeProperties[] = [
+	{
+		displayName: 'Experiment ID',
+		name: 'experimentId',
+		type: 'string',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['experiment', 'report'],
+				operation: [
+					'get',
+					'update',
+					'updateStatus',
+					'duplicate',
+					'updateTrafficAllocation',
+					'toggleTracking',
+					'getReport',
+					'getDailyReport',
+					'getRawRevenueReport',
+				],
+			},
 		},
+		default: '',
+		description: 'The ID of the experiment',
+		placeholder: '12345',
 	},
-	default: '',
-	description: 'The ID of the experiment',
-	placeholder: 'exp_123abc',
-}];
+];
 
 /**
  * Pagination parameters for getAll operation
@@ -118,10 +120,7 @@ const filteringParameters: INodeProperties[] = [
 				operation: ['getAll'],
 			},
 		},
-		options: [
-			{ name: 'All', value: '' },
-			...STATUS_OPTIONS,
-		],
+		options: [{ name: 'All', value: '' }, ...STATUS_OPTIONS],
 		default: '',
 		description: 'Filter experiments by status',
 	},
@@ -267,23 +266,27 @@ const createExperimentParameters: INodeProperties[] = [
 				operation: ['create'],
 			},
 		},
-		default: JSON.stringify([
-			{
-				name: 'Control',
-				traffic_allocation: 50,
-			},
-			{
-				name: 'Variation A',
-				traffic_allocation: 50,
-				javascript: "console.log('Variation A');",
-				javascript_reset: "console.log('Reset');",
-				css: '.hero { background: blue; }',
-				extensions: [],
-				changesets: [],
-				redirect_url: 'https://example.com/variant',
-				ga4_audience_id: 'aud_123',
-			},
-		], null, 2),
+		default: JSON.stringify(
+			[
+				{
+					name: 'Control',
+					traffic_allocation: 50,
+				},
+				{
+					name: 'Variation A',
+					traffic_allocation: 50,
+					javascript: "console.log('Variation A');",
+					javascript_reset: "console.log('Reset');",
+					css: '.hero { background: blue; }',
+					extensions: [],
+					changesets: [],
+					redirect_url: 'https://example.com/variant',
+					ga4_audience_id: 'aud_123',
+				},
+			],
+			null,
+			2,
+		),
 		description:
 			'Array of variations. Required: name, traffic_allocation (0-100). Optional: javascript, javascript_reset, css, extensions (array), changesets (array), redirect_url (max 255 chars), ga4_audience_id (max 255 chars).',
 		typeOptions: {
@@ -397,7 +400,7 @@ const updateExperimentParameters: INodeProperties[] = [
 		},
 		default: '',
 		description: 'Google Analytics 4 audience ID for this experiment',
-		placeholder: 'aud_123abc',
+		placeholder: '12345',
 	},
 	{
 		displayName: 'Status',
@@ -413,49 +416,49 @@ const updateExperimentParameters: INodeProperties[] = [
 		default: 'initial',
 		description: 'Updated experiment status (leave empty to keep current)',
 	},
-	{
-		displayName: 'Scheduled Start Date',
-		name: 'scheduled_start_date',
-		type: 'string',
-		displayOptions: {
-			show: {
-				resource: ['experiment'],
-				operation: ['update'],
-			},
-		},
-		default: '',
-		placeholder: '2024-02-01',
-		description: 'Scheduled start date in YYYY-MM-DD format (leave empty to keep current)',
-	},
-	{
-		displayName: 'Scheduled End Date',
-		name: 'scheduled_end_date',
-		type: 'string',
-		displayOptions: {
-			show: {
-				resource: ['experiment'],
-				operation: ['update'],
-			},
-		},
-		default: '',
-		placeholder: '2024-03-01',
-		description: 'Scheduled end date in YYYY-MM-DD format (leave empty to keep current)',
-	},
-	{
-		displayName: 'Scheduled Timezone',
-		name: 'scheduled_timezone',
-		type: 'string',
-		displayOptions: {
-			show: {
-				resource: ['experiment'],
-				operation: ['update'],
-			},
-		},
-		default: '',
-		placeholder: 'America/New_York',
-		description:
-			'Timezone for scheduled dates (e.g., America/New_York, Europe/Berlin) (leave empty to keep current)',
-	},
+	// {
+	// 	displayName: 'Scheduled Start Date',
+	// 	name: 'scheduled_start_date',
+	// 	type: 'string',
+	// 	displayOptions: {
+	// 		show: {
+	// 			resource: ['experiment'],
+	// 			operation: ['update'],
+	// 		},
+	// 	},
+	// 	default: '',
+	// 	placeholder: '2024-02-01',
+	// 	description: 'Scheduled start date in YYYY-MM-DD format (leave empty to keep current)',
+	// },
+	// {
+	// 	displayName: 'Scheduled End Date',
+	// 	name: 'scheduled_end_date',
+	// 	type: 'string',
+	// 	displayOptions: {
+	// 		show: {
+	// 			resource: ['experiment'],
+	// 			operation: ['update'],
+	// 		},
+	// 	},
+	// 	default: '',
+	// 	placeholder: '2024-03-01',
+	// 	description: 'Scheduled end date in YYYY-MM-DD format (leave empty to keep current)',
+	// },
+	// {
+	// 	displayName: 'Scheduled Timezone',
+	// 	name: 'scheduled_timezone',
+	// 	type: 'string',
+	// 	displayOptions: {
+	// 		show: {
+	// 			resource: ['experiment'],
+	// 			operation: ['update'],
+	// 		},
+	// 	},
+	// 	default: '',
+	// 	placeholder: 'America/New_York',
+	// 	description:
+	// 		'Timezone for scheduled dates (e.g., America/New_York, Europe/Berlin) (leave empty to keep current)',
+	// },
 	{
 		displayName: 'Variations',
 		name: 'variations',
@@ -512,46 +515,54 @@ const updateExperimentParameters: INodeProperties[] = [
 /**
  * Status update parameter
  */
-const statusParameter: INodeProperties[] = [{
-	displayName: 'Status',
-	name: 'status',
-	type: 'options',
-	required: true,
-	displayOptions: {
-		show: {
-			resource: ['experiment'],
-			operation: ['updateStatus'],
+const statusParameter: INodeProperties[] = [
+	{
+		displayName: 'Status',
+		name: 'status',
+		type: 'options',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['experiment'],
+				operation: ['updateStatus'],
+			},
 		},
+		options: STATUS_OPTIONS,
+		default: 'initial',
+		description: 'The new status for the experiment',
 	},
-	options: STATUS_OPTIONS,
-	default: 'initial',
-	description: 'The new status for the experiment',
-}];
+];
 
 /**
  * Traffic allocation parameter for updateTrafficAllocation operation
  */
-const trafficAllocationParameter: INodeProperties[] = [{
-	displayName: 'Variations',
-	name: 'variations',
-	type: 'json',
-	required: true,
-	displayOptions: {
-		show: {
-			resource: ['experiment'],
-			operation: ['updateTrafficAllocation'],
+const trafficAllocationParameter: INodeProperties[] = [
+	{
+		displayName: 'Variations',
+		name: 'variations',
+		type: 'json',
+		required: true,
+		displayOptions: {
+			show: {
+				resource: ['experiment'],
+				operation: ['updateTrafficAllocation'],
+			},
+		},
+		default: JSON.stringify(
+			[
+				{ id: 123, traffic_allocation: 60 },
+				{ id: 456, traffic_allocation: 40 },
+			],
+			null,
+			2,
+		),
+		description:
+			'Array of variations with updated traffic allocation. Each variation must have an ID (number) and traffic_allocation (0-100). Total must not exceed 100%.',
+		typeOptions: {
+			alwaysOpenEditWindow: true,
 		},
 	},
-	default: JSON.stringify([
-		{ id: 123, traffic_allocation: 60 },
-		{ id: 456, traffic_allocation: 40 },
-	], null, 2),
-	description:
-		'Array of variations with updated traffic allocation. Each variation must have an ID (number) and traffic_allocation (0-100). Total must not exceed 100%.',
-	typeOptions: {
-		alwaysOpenEditWindow: true,
-	},
-}];
+];
 
 /**
  * Report parameters for all report operations
@@ -560,7 +571,7 @@ const reportParameters: INodeProperties[] = [
 	{
 		displayName: 'Start Date',
 		name: 'start_date',
-		type: 'string',
+		type: 'dateTime',
 		required: true,
 		displayOptions: {
 			show: {
@@ -575,7 +586,7 @@ const reportParameters: INodeProperties[] = [
 	{
 		displayName: 'End Date',
 		name: 'end_date',
-		type: 'string',
+		type: 'dateTime',
 		required: true,
 		displayOptions: {
 			show: {

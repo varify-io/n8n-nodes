@@ -2,16 +2,19 @@
 	"node": "n8n-nodes-varify",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
-	"categories": ["Development", "Developer Tools"],
+	"categories": [
+		"Development",
+		"Developer Tools"
+	],
 	"resources": {
 		"credentialDocumentation": [
 			{
-				"url": "https://gitlab.com/varify/n8n-nodes?tab=readme-ov-file#credentials"
+				"url": "https://varify.io/userdocumentation/experiment-api/"
 			}
 		],
 		"primaryDocumentation": [
 			{
-				"url": "https://gitlab.com/varify/n8n-nodes?tab=readme-ov-file"
+				"url": "https://varify.io/userdocumentation/experiment-api/"
 			}
 		]
 	}

@@ -7,15 +7,15 @@ export class VarifyOAuth2Api implements ICredentialType {
 	name = 'varifyOAuth2Api';
 
 	displayName = 'varify.io OAuth2 API';
-	documentationUrl = 'https://varify.io';
-	icon = 'file:../icons/github.svg' as Icon;
+	documentationUrl = 'https://varify.io/userdocumentation/experiment-api/';
+	icon = 'file:../icons/logo.svg' as Icon;
 	extends = ['oAuth2Api'];
 
 	properties: INodeProperties[] = [
 		{
 			displayName: 'API Base URL',
 			name: 'apiBaseUrl',
-			type: 'string',
+			type: 'hidden',
 			default: 'https://app.varify.io',
 			required: true,
 			description: 'Base URL without trailing slash',

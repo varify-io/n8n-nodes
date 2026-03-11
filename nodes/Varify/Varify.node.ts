@@ -32,7 +32,7 @@ export class Varify implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'Varify',
 		name: 'varify',
-		icon: { light: 'file:../../icons/github.svg', dark: 'file:../../icons/github.dark.svg' },
+		icon: 'file:../../icons/logo.svg',
 		group: ['input'],
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
@@ -66,16 +66,16 @@ export class Varify implements INodeType {
 						value: 'experiment',
 						description: 'Manage A/B testing experiments',
 					},
-					{
-						name: 'Client',
-						value: 'client',
-						description: 'Retrieve client information',
-					},
-					{
-						name: 'Report',
-						value: 'report',
-						description: 'Access experiment reports',
-					},
+					// {
+					// 	name: 'Client',
+					// 	value: 'client',
+					// 	description: 'Retrieve client information',
+					// },
+					// {
+					// 	name: 'Report',
+					// 	value: 'report',
+					// 	description: 'Access experiment reports',
+					// },
 					{
 						name: 'Schema',
 						value: 'schema',
