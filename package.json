@@ -1,6 +1,6 @@
 {
     "name": "@varify-io/n8n-nodes-varify",
-    "version": "0.3.0",
+    "version": "0.3.1",
     "license": "MIT",
     "homepage": "",
     "description": "n8n node for varify papi",
