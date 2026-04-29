@@ -2,8 +2,8 @@
     "name": "@varify-io/n8n-nodes-varify",
     "version": "0.4.1",
     "license": "MIT",
-    "homepage": "",
-    "description": "n8n node for varify papi",
+    "homepage": "https://developers.varify.io/",
+    "description": "n8n community node to interact with the Varify.io A/B testing platform",
     "keywords": [
         "n8n-community-node-package"
     ],
