@@ -1,6 +1,6 @@
 {
     "name": "@varify-io/n8n-nodes-varify",
-    "version": "0.4.1",
+    "version": "1.0.0",
     "license": "MIT",
     "homepage": "https://developers.varify.io/",
     "description": "n8n community node to interact with the Varify.io A/B testing platform",
