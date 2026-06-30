@@ -37,7 +37,9 @@ export class Varify implements INodeType {
 		version: 1,
 		subtitle: '={{$parameter["operation"] + ": " + $parameter["resource"]}}',
 		description: 'Interact with the Varify.io A/B testing platform',
-		defaults: {},
+		defaults: {
+			name: "Varify",
+		},
 		usableAsTool: true,
 		inputs: [NodeConnectionTypes.Main],
 		outputs: [NodeConnectionTypes.Main],
