@@ -1,5 +1,5 @@
 {
-	"node": "n8n-nodes-varify",
+	"node": "@varify-io/n8n-nodes-varify.varify",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
 	"categories": [
