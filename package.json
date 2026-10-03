@@ -8,7 +8,7 @@
         "n8n-community-node-package"
     ],
     "engines": {
-        "node": "22.22.1"
+        "node": ">=22.22.1"
     },
     "author": {
         "name": "Dan Schalow",
